@@ -11,6 +11,7 @@
     <field name="arch" type="xml">
         <search>
           <field name="name"/>
+          <field name="partner_id"/>
           <field name="product_id"/>
           <field name="invoice_id"/>
           <group name="dom_state" string="State">
@@ -27,6 +28,7 @@
           <group name="group_by" string="Group By..">
               <filter name="grp_product" string="Product" context="{'group_by':'product_id'}"/>
               <filter name="grp_state" string="State" context="{'group_by':'state'}"/>
+              <filter name="grp_partner" string="Client" context="{'group_by':'partner_id'}"/>
               <filter name="grp_invoice_state" string="Invoice State" context="{'group_by':'invoice_state'}"/>
               <filter name="grp_invoice" string="# Invoice" context="{'group_by':'invoice_id'}"/>
               <filter name="grp_date_done_year" string="Date Finish by Year" context="{'group_by':'date_done:year'}"/>
@@ -44,6 +46,7 @@
     <field name="arch" type="xml">
         <tree>
             <field name="name"/>
+            <field name="partner_id"/>
             <field name="product_id"/>
             <field name="amount_untaxed"/>
             <field name="amount_tax"/>
@@ -241,6 +244,7 @@
     <field name="arch" type="xml">
         <search>
           <field name="name"/>
+          <field name="partner_id"/>
           <field name="product_id"/>
           <field name="case_id"/>
           <field name="invoice_id"/>
@@ -257,6 +261,7 @@
           </group>
           <group name="group_by" string="Group By..">
               <filter name="grp_case" string="# Case" context="{'group_by':'case_id'}"/>
+              <filter name="grp_partner" string="Client" context="{'group_by':'partner_id'}"/>
               <filter name="grp_product" string="Product" context="{'group_by':'product_id'}"/>
               <filter name="grp_state" string="State" context="{'group_by':'state'}"/>
               <filter name="grp_invoice_state" string="Invoice State" context="{'group_by':'invoice_state'}"/>
@@ -264,7 +269,7 @@
               <filter name="grp_date_done_year" string="Date Finish by Year" context="{'group_by':'date_done:year'}"/>
               <filter name="grp_date_done_month" string="Date Finish by Month" context="{'group_by':'date_done:month'}"/>
               <filter name="grp_date_done_week" string="Date Finish by Week" context="{'group_by':'date_done:week'}"/>
-              <filter name="grp_date_done_day" string="Date Finish by Day" context="{'group_by':'date_done:day'}"/>              
+              <filter name="grp_date_done_day" string="Date Finish by Day" context="{'group_by':'date_done:day'}"/>
           </group>
         </search>
     </field>
@@ -277,6 +282,7 @@
         <tree create="false" edit="false" delete="false">
             <field name="case_id"/>
             <field name="name"/>
+            <field name="partner_id"/>
             <field name="product_id"/>
             <field name="amount_untaxed"/>
             <field name="amount_tax"/>
