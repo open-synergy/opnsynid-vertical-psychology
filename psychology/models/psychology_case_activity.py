@@ -68,6 +68,13 @@ class PsychologyCaseActivity(models.Model):
         ondelete="cascade",
         required=True,
     )
+    partner_id = fields.Many2one(
+        string="Client",
+        comodel_name="res.partner",
+        readonly=True,
+        related="case_id.partner_id",
+        store=True,
+    )
     name = fields.Char(
         string="# Document",
         required=True,
