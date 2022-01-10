@@ -3,7 +3,7 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, _
+from openerp import _, api, fields, models
 from openerp.exceptions import Warning as UserError
 
 
@@ -42,7 +42,7 @@ class PsychologyCaseService(models.Model):
                 product=record.product_id,
             )
             amount_untaxed += tax_comp["total"]
-            amount_tax += (tax_comp["total_included"] - tax_comp["total"])
+            amount_tax += tax_comp["total_included"] - tax_comp["total"]
             amount_total += tax_comp["total_included"]
             record.amount_untaxed = amount_untaxed
             record.amount_tax = amount_tax
@@ -52,7 +52,7 @@ class PsychologyCaseService(models.Model):
     def _compute_reference_id(self):
         for record in self:
             if record.model and record.res_id:
-                record.reference_id = "%s,%s" % (record.model, record.res_id)
+                record.reference_id = "{},{}".format(record.model, record.res_id)
 
     case_id = fields.Many2one(
         string="# Case",
@@ -366,8 +366,7 @@ class PsychologyCaseService(models.Model):
         self.price_unit = 0.0
         if self.product_id and self.pricelist_id and self.uom_id:
             price_unit = self.pricelist_id.price_get(
-                prod_id=self.product_id.id,
-                qty=1.0
+                prod_id=self.product_id.id, qty=1.0
             )[self.pricelist_id.id]
             self.price_unit = price_unit
 
@@ -375,20 +374,23 @@ class PsychologyCaseService(models.Model):
     def _create_customer_invoice_line(self, invoice):
         self.ensure_one()
         obj_line = self.env["account.invoice.line"]
-        line = obj_line.create(
-            self._prepare_invoice_line(invoice)
+        line = obj_line.create(self._prepare_invoice_line(invoice))
+        self.write(
+            {
+                "invoice_state": "invoiced",
+                "invoice_line_id": line.id,
+            }
         )
-        self.write({
-            "invoice_state": "invoiced",
-            "invoice_line_id": line.id,
-        })
 
     @api.multi
     def _get_invoice_line_name(self):
         self.ensure_one()
-        name = """%s
-        # Case: %s
-        """ % (self.product_id.name, self.case_id.name)
+        name = """{}
+        # Case: {}
+        """.format(
+            self.product_id.name,
+            self.case_id.name,
+        )
         return name
 
     @api.multi
@@ -411,9 +413,7 @@ class PsychologyCaseService(models.Model):
     def _unlink_customer_invoice(self):
         self.ensure_one()
         invoices = self.case_id.customer_invoice_ids - self.invoice_id
-        self.case_id.write({
-            "customer_invoice_ids": [(6, 0, invoices.ids)]
-        })
+        self.case_id.write({"customer_invoice_ids": [(6, 0, invoices.ids)]})
         self.case_id._unlink_customer_invoice(self.invoice_id)
 
     @api.model
@@ -421,9 +421,11 @@ class PsychologyCaseService(models.Model):
         _super = super(PsychologyCaseService, self)
         result = _super.create(values)
         sequence = result._create_sequence()
-        result.write({
-            "name": sequence,
-        })
+        result.write(
+            {
+                "name": sequence,
+            }
+        )
         return result
 
     @api.multi

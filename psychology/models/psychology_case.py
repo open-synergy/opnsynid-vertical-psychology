@@ -3,7 +3,7 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, _
+from openerp import _, api, fields, models
 from openerp.exceptions import Warning as UserError
 
 
@@ -42,9 +42,7 @@ class PsychologyCase(models.Model):
     def _compute_service_count(self):
         obj_service = self.env["psychology.case_service"]
         for record in self:
-            criteria = [
-                ("case_id", "=", record.id)
-            ]
+            criteria = [("case_id", "=", record.id)]
             record.service_count = obj_service.search_count(criteria)
 
     @api.depends(
@@ -55,9 +53,7 @@ class PsychologyCase(models.Model):
     def _compute_activity_count(self):
         obj_activity = self.env["psychology.case_activity"]
         for record in self:
-            criteria = [
-                ("case_id", "=", record.id)
-            ]
+            criteria = [("case_id", "=", record.id)]
             record.activity_count = obj_activity.search_count(criteria)
 
     @api.depends(
@@ -350,15 +346,15 @@ class PsychologyCase(models.Model):
         self.ensure_one()
         waction = self.env.ref("psychology.psychology_case_service_action")
         waction = waction.read()[0]
-        waction.update({
-            "domain": [
-                ("case_id", "=", self.id)
-            ],
-            "context": {
-                "default_pricelist_id": self.service_pricelist_id.id,
-                "default_case_id": self.id,
+        waction.update(
+            {
+                "domain": [("case_id", "=", self.id)],
+                "context": {
+                    "default_pricelist_id": self.service_pricelist_id.id,
+                    "default_case_id": self.id,
+                },
             }
-        })
+        )
         return waction
 
     @api.multi
@@ -366,11 +362,11 @@ class PsychologyCase(models.Model):
         self.ensure_one()
         waction = self.env.ref("account.action_invoice_tree1")
         waction = waction.read()[0]
-        waction.update({
-            "domain": [
-                ("id", "in", self.customer_invoice_ids.ids)
-            ],
-        })
+        waction.update(
+            {
+                "domain": [("id", "in", self.customer_invoice_ids.ids)],
+            }
+        )
         return waction
 
     @api.multi
@@ -378,11 +374,11 @@ class PsychologyCase(models.Model):
         self.ensure_one()
         waction = self.env.ref("account.action_invoice_tree2")
         waction = waction.read()[0]
-        waction.update({
-            "domain": [
-                ("id", "in", self.supplier_invoice_ids.ids)
-            ],
-        })
+        waction.update(
+            {
+                "domain": [("id", "in", self.supplier_invoice_ids.ids)],
+            }
+        )
         return waction
 
     @api.multi
@@ -390,15 +386,15 @@ class PsychologyCase(models.Model):
         self.ensure_one()
         waction = self.env.ref("psychology.psychology_case_activity_action")
         waction = waction.read()[0]
-        waction.update({
-            "domain": [
-                ("case_id", "=", self.id)
-            ],
-            "context": {
-                "default_pricelist_id": self.activity_pricelist_id.id,
-                "default_case_id": self.id,
+        waction.update(
+            {
+                "domain": [("case_id", "=", self.id)],
+                "context": {
+                    "default_pricelist_id": self.activity_pricelist_id.id,
+                    "default_case_id": self.id,
+                },
             }
-        })
+        )
         return waction
 
     @api.multi
@@ -473,21 +469,19 @@ class PsychologyCase(models.Model):
         for partner in partners:
             invoice = obj_invoice.create(
                 self._prepare_supplier_invoice_data(
-                    partner=partner,
-                    date_invoice=date_invoice)
+                    partner=partner, date_invoice=date_invoice
+                )
             )
             activities = activity_ids.filtered(
-                lambda r: r.responsible_id.id == partner.id)
+                lambda r: r.responsible_id.id == partner.id
+            )
             for activity in activities:
                 activity._create_supplier_invoice_line(invoice)
 
             supplier_invoice_ids.append(invoice.id)
 
-        supplier_invoice_ids = self.supplier_invoice_ids.ids + \
-            supplier_invoice_ids
-        self.write({
-            "supplier_invoice_ids": [(6, 0, supplier_invoice_ids)]
-        })
+        supplier_invoice_ids = self.supplier_invoice_ids.ids + supplier_invoice_ids
+        self.write({"supplier_invoice_ids": [(6, 0, supplier_invoice_ids)]})
 
     @api.multi
     def _prepare_supplier_invoice_data(self, partner, date_invoice=False):
@@ -526,25 +520,18 @@ class PsychologyCase(models.Model):
             ("invoice_id", "=", invoice.id),
         ]
         activities = obj_activity.search(criteria)
-        activities.write({
-            "invoice_line_id": False,
-            "invoice_state": "2binvoiced"
-        })
+        activities.write({"invoice_line_id": False, "invoice_state": "2binvoiced"})
         invoice.unlink()
 
     @api.multi
     def _create_customer_invoice(self, service_ids, date_invoice=False):
         self.ensure_one()
         obj_invoice = self.env["account.invoice"]
-        invoice = obj_invoice.create(
-            self._prepare_customer_invoice_data(date_invoice)
-        )
+        invoice = obj_invoice.create(self._prepare_customer_invoice_data(date_invoice))
         for service in service_ids:
             service._create_customer_invoice_line(invoice)
         customer_invoice_ids = self.customer_invoice_ids.ids + [invoice.id]
-        self.write({
-            "customer_invoice_ids": [(6, 0, customer_invoice_ids)]
-        })
+        self.write({"customer_invoice_ids": [(6, 0, customer_invoice_ids)]})
 
     @api.multi
     def _get_service_receivable_journal(self):
@@ -579,15 +566,9 @@ class PsychologyCase(models.Model):
     def _unlink_customer_invoice(self, invoice):
         self.ensure_one()
         obj_service = self.env["psychology.case_service"]
-        criteria = [
-            ("invoice_id", "=", invoice.id),
-            ("case_id", "=", self.id)
-        ]
+        criteria = [("invoice_id", "=", invoice.id), ("case_id", "=", self.id)]
         services = obj_service.search(criteria)
-        services.write({
-            "invoice_line_id": False,
-            "invoice_state": "2binvoiced"
-        })
+        services.write({"invoice_line_id": False, "invoice_state": "2binvoiced"})
         invoice.unlink()
 
     @api.model
@@ -595,9 +576,11 @@ class PsychologyCase(models.Model):
         _super = super(PsychologyCase, self)
         result = _super.create(values)
         sequence = result._create_sequence()
-        result.write({
-            "name": sequence,
-        })
+        result.write(
+            {
+                "name": sequence,
+            }
+        )
         return result
 
     @api.multi

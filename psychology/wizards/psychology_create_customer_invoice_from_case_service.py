@@ -3,7 +3,7 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class PsychologyCreateCustomerInvoiceFromCaseService(models.TransientModel):
@@ -34,5 +34,4 @@ class PsychologyCreateCustomerInvoiceFromCaseService(models.TransientModel):
     @api.multi
     def action_create_invoice(self):
         self.ensure_one()
-        self.case_id._create_customer_invoice(
-            self.service_ids, self.date_invoice)
+        self.case_id._create_customer_invoice(self.service_ids, self.date_invoice)
