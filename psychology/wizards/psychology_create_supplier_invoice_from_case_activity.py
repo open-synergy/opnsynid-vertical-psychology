@@ -3,16 +3,12 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class PsychologyCreateSupplierInvoiceFromCaseActivity(models.TransientModel):
     _name = "psychology.create_supplier_invoice_from_case_activity"
     _description = "Create Supplier Invoice From Case Activity"
-
-    @api.model
-    def _default_currency_id(self):
-        return self.env.context.get("active_id", False)
 
     @api.model
     def _default_currency_id(self):
@@ -85,11 +81,11 @@ class PsychologyCreateSupplierInvoiceFromCaseActivity(models.TransientModel):
         partners = self.activity_ids.mapped("responsible_id")
         for partner in partners:
             invoice = obj_invoice.create(
-                self._prepare_supplier_invoice_data(
-                    partner=partner)
+                self._prepare_supplier_invoice_data(partner=partner)
             )
             activities = self.activity_ids.filtered(
-                lambda r: r.responsible_id.id == partner.id)
+                lambda r: r.responsible_id.id == partner.id
+            )
             for activity in activities:
                 activity._create_supplier_invoice_line(invoice)
 
