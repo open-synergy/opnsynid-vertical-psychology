@@ -1,0 +1,21 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_psychology_psychogram_item_value_employee,psychology.psychogram_item_value - user,model_psychology_psychogram_item_value,base.group_user,1,1,1,1
+access_psychology_psychogram_item_value_all,psychology.psychogram_item_value - all,model_psychology_psychogram_item_value,,1,0,0,0
+access_psychology_psychogram_item_value_set_employee,psychology.psychogram_item_value_set - user,model_psychology_psychogram_item_value_set,base.group_user,1,1,1,1
+access_psychology_psychogram_item_value_set_all,psychology.psychogram_item_value_set - all,model_psychology_psychogram_item_value_set,,1,0,0,0
+access_psychology_psychogram_item_value_set_detail_employee,psychology.psychogram_item_value_set_detail - user,model_psychology_psychogram_item_value_set_detail,base.group_user,1,1,1,1
+access_psychology_psychogram_item_value_set_detail_all,psychology.psychogram_item_value_set_detail - all,model_psychology_psychogram_item_value_set_detail,,1,0,0,0
+access_psychology_psychogram_item_category_employee,psychology.psychogram_item_category - user,model_psychology_psychogram_item_category,base.group_user,1,1,1,1
+access_psychology_psychogram_item_category_all,psychology.psychogram_item_category - all,model_psychology_psychogram_item_category,,1,0,0,0
+access_psychology_evaluation_recommendation_employee,psychology.psychogram_evaluation_recommendation - user,model_psychology_evaluation_recommendation,base.group_user,1,1,1,1
+access_psychology_evaluation_recommendation_all,psychology.psychogram_evaluation_recommendation - all,model_psychology_evaluation_recommendation,,1,0,0,0
+access_psychology_psychogram_item_employee,psychology.psychogram_item - user,model_psychology_psychogram_item,base.group_user,1,1,1,1
+access_psychology_psychogram_item_all,psychology.psychogram_item - all,model_psychology_psychogram_item,,1,0,0,0
+access_psychology_psychogram_employee,psychology.psychogram - user,model_psychology_psychogram,base.group_user,1,1,1,1
+access_psychology_psychogram_all,psychology.psychogram - all,model_psychology_psychogram,,1,0,0,0
+access_psychology_evaluation_type_employee,psychology.psychogram_evaluation_type - user,model_psychology_evaluation_type,base.group_user,1,1,1,1
+access_psychology_evaluation_type_all,psychology.evaluation_type - all,model_psychology_evaluation_type,,1,0,0,0
+access_psychology_evaluation_employee,psychology.evaluation - user,model_psychology_evaluation,base.group_user,1,1,1,1
+access_psychology_evaluation_all,psychology.evaluation - all,model_psychology_evaluation,,1,0,0,0
+access_psychology_evaluation_detail_employee,psychology.evaluation_detail - user,model_psychology_evaluation_detail,base.group_user,1,1,1,1
+access_psychology_evaluation_detail_all,psychology.evaluation_detail - all,model_psychology_evaluation_detail,,1,0,0,0
