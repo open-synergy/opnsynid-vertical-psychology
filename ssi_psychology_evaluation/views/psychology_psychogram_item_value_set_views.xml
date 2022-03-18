@@ -32,7 +32,19 @@
     <field name="inherit_id" ref="ssi_master_data_mixin.mixin_master_data_view_form" />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
-        <data />
+        <data>
+            <xpath expr="//page[@name='note']" position="before">
+                <page name="detail" string="Items">
+                    <field name="detail_ids">
+                        <tree editable="top">
+                            <field name="sequence" widget="handle" />
+                            <field name="value_id" />
+                            <field name="quantified_value" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </data>
     </field>
 </record>
 
