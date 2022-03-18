@@ -11,6 +11,8 @@ from . import (
     psychology_psychogram_item,
     psychology_psychogram,
     psychology_evaluation_type,
+    psychology_evaluation_result,
+    psychology_evaluation_purpose,
     psychology_evaluation,
     psychology_evaluation_detail,
 )

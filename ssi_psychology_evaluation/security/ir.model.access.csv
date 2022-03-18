@@ -19,3 +19,7 @@ access_psychology_evaluation_employee,psychology.evaluation - user,model_psychol
 access_psychology_evaluation_all,psychology.evaluation - all,model_psychology_evaluation,,1,0,0,0
 access_psychology_evaluation_detail_employee,psychology.evaluation_detail - user,model_psychology_evaluation_detail,base.group_user,1,1,1,1
 access_psychology_evaluation_detail_all,psychology.evaluation_detail - all,model_psychology_evaluation_detail,,1,0,0,0
+access_psychology_evaluation_result_employee,psychology.psychogram_evaluation_result - user,model_psychology_evaluation_result,base.group_user,1,1,1,1
+access_psychology_evaluation_result_all,psychology.psychogram_evaluation_result - all,model_psychology_evaluation_result,,1,0,0,0
+access_psychology_evaluation_purpose_employee,psychology.psychogram_evaluation_purpose - user,model_psychology_evaluation_purpose,base.group_user,1,1,1,1
+access_psychology_evaluation_purpose_all,psychology.psychogram_evaluation_purpose - all,model_psychology_evaluation_purpose,,1,0,0,0

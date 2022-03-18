@@ -34,30 +34,29 @@
     <field name="arch" type="xml">
         <data>
             <xpath expr="//page[@name='note']" position="before">
-                <page name="allowed" string="Allowed Selection">
-                    <group
-                            name="allowed_1"
-                            colspan="4"
-                            col="2"
-                            string="Allowed Psychogram"
-                        >
-                        <field name="psychogram_ids" nolabel="1" colspan="2" />
+                <page name="general" string="General Configuration">
+                    <group name="general_1" colspan="4" col="2">
+                        <field name="purpose_id" />
+                        <field name="use_initial_recommendation" />
+                        <field name="use_review" />
+                        <field name="use_editing" />
+                        <field name="psychogram_ids" widget="many2many_tags" />
+                        <field name="recommedation_ids" widget="many2many_tags" />
                     </group>
-                    <group
-                            name="allowed_2"
-                            colspan="4"
-                            col="2"
-                            string="Allowed Recommendation"
-                        >
-                        <field name="recommedation_ids" nolabel="1" colspan="2" />
-                    </group>
-                    <group
-                            name="allowed_3"
-                            colspan="4"
-                            col="2"
-                            string="Allowed Psychologist"
-                        >
-                        <field name="psychologist_ids" nolabel="1" colspan="2" />
+                </page>
+                <page name="assignment" string="Assignment">
+                    <group name="assignment_1" colspan="4" col="2">
+                          <field
+                                name="initial_recommender_ids"
+                                widget="many2many_tags_avatar"
+                            />
+                          <field
+                                name="psychologist_ids"
+                                widget="many2many_tags_avatar"
+                            />
+                          <field name="reviewer_ids" widget="many2many_tags_avatar" />
+                          <field name="editor_ids" widget="many2many_tags_avatar" />
+
                     </group>
                 </page>
             </xpath>
