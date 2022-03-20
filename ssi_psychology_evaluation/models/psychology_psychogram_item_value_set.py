@@ -19,4 +19,5 @@ class PsychologyPsychogramItemValueSet(models.Model):
         string="Details",
         comodel_name="psychology.psychogram_item_value_set_detail",
         inverse_name="set_id",
+        copy=True,
     )
