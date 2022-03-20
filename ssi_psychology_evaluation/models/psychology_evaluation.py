@@ -140,20 +140,22 @@ class PsychologyEvaluation(models.Model):
     )
     date_report = fields.Date(
         string="Report Date",
+        copy=True,
         index=True,
         required=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
-        copy=True,
         default=fields.Date.context_today,
     )
     initial_recommendation_deadline = fields.Date(
         string="Initial Recommendation Deadline",
+        copy=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
     evaluation_deadline = fields.Date(
         string="Evaluation Deadline",
+        copy=True,
         required=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
@@ -165,18 +167,20 @@ class PsychologyEvaluation(models.Model):
     )
     editing_deadline = fields.Date(
         string="Editing Deadline",
+        copy=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
     report_deadline = fields.Date(
         string="Report Deadline",
+        copy=True,
         readonly=True,
         required=True,
         states={"draft": [("readonly", False)]},
     )
     initial_result_id = fields.Many2one(
         string="Initial Result",
-        copy=True,
+        copy=False,
         required=False,
         ondelete="restrict",
         comodel_name="psychology.evaluation_result",
@@ -185,28 +189,32 @@ class PsychologyEvaluation(models.Model):
     )
     description = fields.Text(
         string="Description",
+        copy=False,
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
     conclusion = fields.Text(
         string="Conclusion",
+        copy=False,
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
     advise = fields.Text(
         string="Advise",
+        copy=False,
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
     same_with_intial_result = fields.Boolean(
         string="Same With Initial Result",
         default=False,
+        copy=False,
         readonly=True,
         states={"evaluation": [("readonly", False)]},
     )
     result_id = fields.Many2one(
         string="Result",
-        copy=True,
+        copy=False,
         required=False,
         ondelete="restrict",
         comodel_name="psychology.evaluation_result",
@@ -216,12 +224,13 @@ class PsychologyEvaluation(models.Model):
     same_with_result = fields.Boolean(
         string="Same With Initial Result",
         default=False,
+        copy=False,
         readonly=True,
         states={"review": [("readonly", False)]},
     )
     final_result_id = fields.Many2one(
         string="Final Result",
-        copy=True,
+        copy=False,
         required=False,
         ondelete="restrict",
         comodel_name="psychology.evaluation_result",
@@ -232,6 +241,7 @@ class PsychologyEvaluation(models.Model):
         string="Details",
         comodel_name="psychology.evaluation_detail",
         inverse_name="evaluation_id",
+        copy=False,
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
