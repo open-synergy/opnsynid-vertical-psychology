@@ -1,5 +1,6 @@
 <odoo>
 <data noupdate="0">
+<!-- Evaluation -->
 <record id="policy_template" model="policy.template">
     <field name="name">Standard</field>
     <field
@@ -215,6 +216,161 @@ if not document.approval_template_id:
     <field
                 name="state_ids"
                 search="[('field_id.model_id.model','=','psychology.evaluation'),('value','=','draft')]"
+            />
+    <field name="restrict_user" eval="0" />
+    <field name="restrict_additional" eval="0" />
+</record>
+
+<!-- Evaluation Batch -->
+
+<record id="policy_template_batch" model="policy.template">
+    <field name="name">Standard</field>
+    <field
+                name="model_id"
+                ref="ssi_psychology_evaluation.model_psychology_evaluation_batch"
+            />
+    <field
+                name="state_field_id"
+                search="[('model_id.model','=','psychology.evaluation'),('name','=','state')]"
+            />
+    <field name="sequence" eval="100" />
+    <field name="python_code">result=True</field>
+</record>
+
+<!-- Evaluation Batch: confirm_ok -->
+<record id="policy_template_batch_detail1" model="policy.template_detail">
+    <field name="template_id" ref="policy_template_batch" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','psychology.evaluation_batch'),('name','=','confirm_ok')]"
+            />
+    <field name="restrict_state" eval="1" />
+    <field
+                name="state_ids"
+                search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','=','open')]"
+            />
+    <field name="restrict_user" eval="0" />
+    <field name="restrict_additional" eval="0" />
+</record>
+
+<!-- Evaluation Batch: approve_ok -->
+<record id="policy_template_batch_detail2" model="policy.template_detail">
+    <field name="template_id" ref="policy_template_batch" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','psychology.evaluation_batch'),('name','=','approve_ok')]"
+            />
+    <field name="restrict_state" eval="1" />
+    <field
+                name="state_ids"
+                search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','=','confirm')]"
+            />
+    <field name="restrict_user" eval="0" />
+    <field name="restrict_additional" eval="1" />
+    <field name="additional_python_code">result = False
+if env.user.id in document.active_approver_user_ids.ids:
+    result = True</field>
+</record>
+
+<!-- Evaluation Batch: reject_ok -->
+<record id="policy_template_batch_detail3" model="policy.template_detail">
+    <field name="template_id" ref="policy_template_batch" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','psychology.evaluation_batch'),('name','=','reject_ok')]"
+            />
+    <field name="restrict_state" eval="1" />
+    <field
+                name="state_ids"
+                search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','=','confirm')]"
+            />
+    <field name="restrict_user" eval="0" />
+    <field name="restrict_additional" eval="1" />
+    <field name="additional_python_code">result = False
+if env.user.id in document.active_approver_user_ids.ids:
+    result = True</field>
+</record>
+
+
+<!-- Evaluation Batch: restart_approval_ok -->
+<record id="policy_template_batch_detail4" model="policy.template_detail">
+    <field name="template_id" ref="policy_template_batch" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','psychology.evaluation_batch'),('name','=','restart_approval_ok')]"
+            />
+    <field name="restrict_state" eval="1" />
+    <field
+                name="state_ids"
+                search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','=','confirm')]"
+            />
+    <field name="restrict_user" eval="0" />
+    <field name="restrict_additional" eval="1" />
+    <field name="additional_python_code">result = False
+if not document.approval_template_id:
+    result = True</field>
+</record>
+
+<!-- Evaluation Batch: cancel_ok -->
+<record id="policy_template_batch_detail5" model="policy.template_detail">
+    <field name="template_id" ref="policy_template_batch" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','psychology.evaluation_batch'),('name','=','cancel_ok')]"
+            />
+    <field name="restrict_state" eval="1" />
+    <field
+                name="state_ids"
+                search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','in',['draft','open','confirm','done'])]"
+            />
+    <field name="restrict_user" eval="0" />
+    <field name="restrict_additional" eval="0" />
+</record>
+
+
+<!-- Evaluation Batch: restart_ok -->
+<record id="policy_template_batch_detail6" model="policy.template_detail">
+    <field name="template_id" ref="policy_template_batch" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','psychology.evaluation_batch'),('name','=','restart_ok')]"
+            />
+    <field name="restrict_state" eval="1" />
+    <field
+                name="state_ids"
+                search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','in',['cancel','reject'])]"
+            />
+    <field name="restrict_user" eval="0" />
+    <field name="restrict_additional" eval="0" />
+</record>
+
+<!-- Evaluation Batch: manual_number_ok -->
+<record id="policy_template_batch_detail7" model="policy.template_detail">
+    <field name="template_id" ref="policy_template_batch" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','psychology.evaluation_batch'),('name','=','manual_number_ok')]"
+            />
+    <field name="restrict_state" eval="1" />
+    <field
+                name="state_ids"
+                search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','=','draft')]"
+            />
+    <field name="restrict_user" eval="0" />
+    <field name="restrict_additional" eval="0" />
+</record>
+
+<!-- Evaluation Batch: open_ok -->
+<record id="policy_template_batch_detail8" model="policy.template_detail">
+    <field name="template_id" ref="policy_template_batch" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','psychology.evaluation_batch'),('name','=','open_ok')]"
+            />
+    <field name="restrict_state" eval="1" />
+    <field
+                name="state_ids"
+                search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','=','draft')]"
             />
     <field name="restrict_user" eval="0" />
     <field name="restrict_additional" eval="0" />
