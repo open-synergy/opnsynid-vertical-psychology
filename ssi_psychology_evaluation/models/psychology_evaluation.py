@@ -138,6 +138,23 @@ class PsychologyEvaluation(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
+    institution_id = fields.Many2one(
+        string="Institution",
+        copy=True,
+        required=True,
+        ondelete="restrict",
+        comodel_name="res.partner",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+    )
+    batch_id = fields.Many2one(
+        string="# Batch",
+        copy=True,
+        ondelete="restrict",
+        comodel_name="psychology.evaluation_batch",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+    )
     date_report = fields.Date(
         string="Report Date",
         copy=True,
@@ -380,6 +397,28 @@ class PsychologyEvaluation(models.Model):
     def onchange_policy_template_id(self):
         template_id = self._get_template_policy()
         self.policy_template_id = template_id
+
+    @api.onchange(
+        "institution_id",
+    )
+    def onchange_batch_id(self):
+        self.batch_id = False
+
+    @api.onchange(
+        "batch_id",
+    )
+    def onchange_purpose_id(self):
+        self.purpose_id = False
+        if self.batch_id:
+            self.purpose_id = self.batch_id.purpose_id
+
+    @api.onchange(
+        "batch_id",
+    )
+    def onchange_report_deadline(self):
+        self.report_deadline = False
+        if self.batch_id:
+            self.report_deadline = self.batch_id.report_deadline
 
     def action_reload_detail(self):
         for record in self:

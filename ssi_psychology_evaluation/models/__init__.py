@@ -15,4 +15,5 @@ from . import (
     psychology_evaluation_purpose,
     psychology_evaluation,
     psychology_evaluation_detail,
+    psychology_evaluation_batch,
 )

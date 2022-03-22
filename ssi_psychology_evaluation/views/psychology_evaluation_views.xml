@@ -20,6 +20,8 @@
                     optional="hide"
                 />
             <field name="client_id" />
+            <field name="institution_id" />
+            <field name="batch_id" />
             <field name="purpose_id" optional="show" />
             <field name="type_id" optional="show" />
             <field name="psychogram_id" optional="show" />
@@ -247,6 +249,8 @@
             <field name="name" />
             <field name="company_id" />
             <field name="client_id" />
+            <field name="institution_id" />
+            <field name="batch_id" />
             <field name="purpose_id" />
             <field name="type_id" />
             <field name="psychologist_id" />
@@ -264,6 +268,12 @@
                     string="Client"
                     context="{'group_by':'client_id'}"
                 />
+            <filter
+                    name="grp_institution"
+                    string="Institution"
+                    context="{'group_by':'institution_id'}"
+                />
+            <filter name="grp_batch" string="Batch" context="{'group_by':'batch_id'}" />
             <filter name="grp_type" string="Type" context="{'group_by':'type_id'}" />
             <filter
                     name="grp_purpose"
@@ -464,6 +474,14 @@
                             <field
                                     name="client_id"
                                     domain="[('is_company','=',False),('parent_id','=',False)]"
+                                />
+                            <field
+                                    name="institution_id"
+                                    domain="[('is_company','=',True),('parent_id','=',False)]"
+                                />
+                            <field
+                                    name="batch_id"
+                                    domain="[('client_id','=',institution_id),('state','=','open')]"
                                 />
                         </group>
                         <group

@@ -10,6 +10,13 @@
         sequence="20"
     />
 
+  <menuitem
+        id="menu_psychology_evaluation_batch_root"
+        name="Evaluation Batch"
+        parent="ssi_psychology.menu_root_psychology"
+        sequence="30"
+    />
+
 <menuitem
         id="menu_psychology_evaluation_configuration"
         name="Evaluation"
