@@ -141,7 +141,7 @@ class PsychologyEvaluation(models.Model):
     institution_id = fields.Many2one(
         string="Institution",
         copy=True,
-        required=True,
+        required=False,
         ondelete="restrict",
         comodel_name="res.partner",
         readonly=True,
