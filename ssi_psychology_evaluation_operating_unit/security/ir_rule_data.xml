@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+<record id="ir_rule_psychology_evaluation_allowed_operating_units" model="ir.rule">
+    <field
+            name="model_id"
+            ref="ssi_psychology_evaluation.model_psychology_evaluation"
+        />
+    <field
+            name="domain_force"
+        >['|',('operating_unit_id','=',False),('operating_unit_id','in',[g.id for g in user.operating_unit_ids])]</field>
+    <field name="name">psychology.evaluation - ou</field>
+    <field name="global" eval="True" />
+    <field eval="0" name="perm_unlink" />
+    <field eval="0" name="perm_write" />
+    <field eval="1" name="perm_read" />
+    <field eval="0" name="perm_create" />
+</record>
+
+<record
+        id="ir_rule_psychology_evaluation_batch_allowed_operating_units"
+        model="ir.rule"
+    >
+    <field
+            name="model_id"
+            ref="ssi_psychology_evaluation.model_psychology_evaluation_batch"
+        />
+    <field
+            name="domain_force"
+        >['|',('operating_unit_id','=',False),('operating_unit_id','in',[g.id for g in user.operating_unit_ids])]</field>
+    <field name="name">psychology.evaluation_batch - ou</field>
+    <field name="global" eval="True" />
+    <field eval="0" name="perm_unlink" />
+    <field eval="0" name="perm_write" />
+    <field eval="1" name="perm_read" />
+    <field eval="0" name="perm_create" />
+</record>
+</odoo>
