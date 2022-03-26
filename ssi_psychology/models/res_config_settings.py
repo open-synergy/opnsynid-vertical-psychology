@@ -21,3 +21,6 @@ class ResConfigSettings(models.TransientModel):
     module_ssi_psychology_intervention = fields.Boolean(
         string="Intervention",
     )
+    module_ssi_psychology_operating_unit = fields.Boolean(
+        string="Operating Unit",
+    )
