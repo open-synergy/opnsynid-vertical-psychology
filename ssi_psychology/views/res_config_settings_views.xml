@@ -16,11 +16,8 @@
                     string="Psychology"
                     data-key="ssi_psychology"
                 >
-                <h2>Feature &amp; Integration</h2>
-                <div
-                        class="row mt16 o_settings_container"
-                        id="psychology_feature_integration"
-                    >
+                <h2>Feature</h2>
+                <div class="row mt16 o_settings_container" id="psychology_feature">
                     <div
                             id="use_psychology_evaluation"
                             class="col-12 col-lg-6 o_setting_box"
@@ -81,6 +78,29 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <h2>Integration</h2>
+                <div class="row mt16 o_settings_container" id="psychology_feature">
+                      <div
+                            id="operating_unit_integration"
+                            class="col-12 col-lg-6 o_setting_box"
+                        >
+                          <div
+                                name="operating_unit_integration_left"
+                                class="o_setting_left_pane"
+                            >
+                              <field name="module_ssi_psychology_operating_unit" />
+                          </div>
+                          <div
+                                name="use_psychology_evaluation_right"
+                                class="o_setting_right_pane"
+                            >
+                              <label for="module_ssi_psychology_operating_unit" />
+                              <div class="text-muted">
+                                  Enable integration with operating unit
+                              </div>
+                          </div>
+                      </div>
                 </div>
             </div>
         </xpath>
