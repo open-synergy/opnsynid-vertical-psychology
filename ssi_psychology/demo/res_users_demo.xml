@@ -6,7 +6,7 @@
 <record id="res_users_1" model="res.users">
     <field name="partner_id" ref="ssi_psychology.res_partner_1" />
     <field name="login">sigmund-freud</field>
-    <field name="password">demo1234</field>
+    <field name="password">*Hde)G([qW2G@]=?</field>
     <field name="company_id" ref="base.main_company" />
     <field name="notification_type">email</field>
     <field
@@ -23,7 +23,7 @@
 <record id="res_users_2" model="res.users">
     <field name="partner_id" ref="ssi_psychology.res_partner_2" />
     <field name="login">ivan-pavlov</field>
-    <field name="password">demo1234</field>
+    <field name="password">$h^nP6a'34L,B/S"</field>
     <field name="company_id" ref="base.main_company" />
     <field name="notification_type">email</field>
     <field
@@ -40,7 +40,7 @@
 <record id="res_users_3" model="res.users">
     <field name="partner_id" ref="ssi_psychology.res_partner_3" />
     <field name="login">william-james</field>
-    <field name="password">demo1234</field>
+    <field name="password">\MHZc?.k]n3YBt,/</field>
     <field name="company_id" ref="base.main_company" />
     <field name="notification_type">email</field>
     <field
@@ -57,7 +57,7 @@
 <record id="res_users_4" model="res.users">
     <field name="partner_id" ref="ssi_psychology.res_partner_4" />
     <field name="login">wilhelm-wundt</field>
-    <field name="password">demo1234</field>
+    <field name="password">M/d559C@F2Q2e]ew</field>
     <field name="company_id" ref="base.main_company" />
     <field name="notification_type">email</field>
     <field
@@ -74,7 +74,7 @@
 <record id="res_users_5" model="res.users">
     <field name="partner_id" ref="ssi_psychology.res_partner_5" />
     <field name="login">erik-erikson</field>
-    <field name="password">demo1234</field>
+    <field name="password">UxKaAA3JUREc3y,B</field>
     <field name="company_id" ref="base.main_company" />
     <field name="notification_type">email</field>
     <field
@@ -91,7 +91,7 @@
 <record id="res_users_6" model="res.users">
     <field name="partner_id" ref="ssi_psychology.res_partner_6" />
     <field name="login">carl-rogers</field>
-    <field name="password">demo1234</field>
+    <field name="password">vu%s9Y4nMyst:8:E</field>
     <field name="company_id" ref="base.main_company" />
     <field name="notification_type">email</field>
     <field
@@ -108,7 +108,7 @@
 <record id="res_users_7" model="res.users">
     <field name="partner_id" ref="ssi_psychology.res_partner_7" />
     <field name="login">kurt-lewin</field>
-    <field name="password">demo1234</field>
+    <field name="password">g6^zW;k:Nd_G,=D5</field>
     <field name="company_id" ref="base.main_company" />
     <field name="notification_type">email</field>
     <field
