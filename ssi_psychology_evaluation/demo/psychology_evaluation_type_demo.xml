@@ -65,7 +65,7 @@
 
 <record id="psychology_evaluation_type3" model="psychology.evaluation_type">
     <field name="name">Recruitment - Manager</field>
-    <field name="code">X002</field>
+    <field name="code">X003</field>
     <field
             name="purpose_id"
             ref="ssi_psychology_evaluation.psychology_evaluation_purpose_2"

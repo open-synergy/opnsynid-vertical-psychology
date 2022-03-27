@@ -98,7 +98,7 @@
         model="psychology.psychogram_item_value_set"
     >
     <field name="name">Quality - 3 Scale</field>
-    <field name="code">X001</field>
+    <field name="code">X002</field>
 </record>
 
 <record
@@ -156,7 +156,7 @@
         model="psychology.psychogram_item_value_set"
     >
     <field name="name">Quality - 5 Scale</field>
-    <field name="code">X001</field>
+    <field name="code">X003</field>
 </record>
 
 <record
