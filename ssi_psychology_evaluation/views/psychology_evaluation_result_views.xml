@@ -48,7 +48,7 @@
         name="Results"
         parent="menu_psychology_evaluation_configuration"
         action="psychology_evaluation_result_action"
-        sequence="1"
+        sequence="2"
     />
 
 </odoo>

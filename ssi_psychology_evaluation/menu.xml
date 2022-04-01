@@ -28,7 +28,7 @@
         id="menu_psychology_psychogram_root"
         name="Psychogram"
         parent="menu_psychology_evaluation_configuration"
-        sequence="10"
+        sequence="100"
     />
 
 

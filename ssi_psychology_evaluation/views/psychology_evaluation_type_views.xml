@@ -41,7 +41,9 @@
                         <field name="use_review" />
                         <field name="use_editing" />
                         <field name="psychogram_ids" widget="many2many_tags" />
-                        <field name="recommedation_ids" widget="many2many_tags" />
+                        <field name="report_type_ids" widget="many2many_tags" />
+                        <field name="deadline_ids" widget="many2many_tags" />
+                        <field name="recommendation_ids" widget="many2many_tags" />
                     </group>
                 </page>
                 <page name="assignment" string="Assignment">
@@ -76,7 +78,7 @@
         name="Types"
         parent="menu_psychology_evaluation_configuration"
         action="psychology_evaluation_type_action"
-        sequence="1"
+        sequence="6"
     />
 
 </odoo>
