@@ -25,6 +25,9 @@
             <field name="purpose_id" optional="show" />
             <field name="type_id" optional="show" />
             <field name="psychogram_id" optional="show" />
+            <field name="report_type_id" />
+            <field name="deadline_id" />
+            <field name="date_start" />
             <field
                     name="initial_recommender_id"
                     widget="many2one_avatar_user"
@@ -253,11 +256,19 @@
             <field name="batch_id" />
             <field name="purpose_id" />
             <field name="type_id" />
+            <field name="report_type_id" />
+            <field name="deadline_id" />
             <field name="psychologist_id" />
             <field name="user_id" />
             <field name="date_report" />
+            <field name="date_start" />
             <field name="psychogram_id" />
             <field name="state" />
+            <filter
+                    name="dom_my_assignment"
+                    string="My Assignments"
+                    domain="['|','|','|',('initial_recommender_id','=',uid),('psychologist_id','=',uid),('reviewer_id','=',uid),('editor_id','=',uid)]"
+                />
             <filter
                     name="grp_company"
                     string="Company"
@@ -300,6 +311,11 @@
                     name="grp_date_report"
                     string="Date Report"
                     context="{'group_by':'date_report'}"
+                />
+            <filter
+                    name="grp_date_start"
+                    string="Date Start"
+                    context="{'group_by':'date_start'}"
                 />
             <group name="state">
                 <filter
@@ -504,6 +520,25 @@
                                     name="psychogram_id"
                                     domain="[('id','in',psychogram_ids)]"
                                 />
+                            <field
+                                    name="report_type_ids"
+                                    widget="many2many_tags"
+                                    invisible="1"
+                                />
+                            <field
+                                    name="report_type_id"
+                                    domain="[('id','in',report_type_ids)]"
+                                />
+                            <field
+                                    name="deadline_ids"
+                                    widget="many2many_tags"
+                                    invisible="1"
+                                />
+                            <field
+                                    name="deadline_id"
+                                    domain="[('id','in',deadline_ids)]"
+                                />
+                            <field name="date_start" />
                             <field name="date_report" />
                         </group>
                     </group>

@@ -36,6 +36,34 @@ class PsychologyEvaluation(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
+    report_type_ids = fields.Many2many(
+        string="Allowed Report Types",
+        comodel_name="psychology.evaluation_report_type",
+        related="type_id.report_type_ids",
+    )
+    report_type_id = fields.Many2one(
+        string="Report Type",
+        comodel_name="psychology.evaluation_report_type",
+        related=False,
+        required=False,
+        ondelete="restrict",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+    )
+    deadline_ids = fields.Many2many(
+        string="Allowed Deadlines",
+        comodel_name="psychology.evaluation_deadline",
+        related="type_id.deadline_ids",
+    )
+    deadline_id = fields.Many2one(
+        string="Deadline",
+        comodel_name="psychology.evaluation_deadline",
+        related=False,
+        required=False,
+        ondelete="restrict",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+    )
     use_initial_recommendation = fields.Boolean(
         string="Use Initial Recommendation",
         related="type_id.use_initial_recommendation",
@@ -157,6 +185,15 @@ class PsychologyEvaluation(models.Model):
     )
     date_report = fields.Date(
         string="Report Date",
+        copy=True,
+        index=True,
+        required=True,
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+        default=fields.Date.context_today,
+    )
+    date_start = fields.Date(
+        string="Start Date",
         copy=True,
         index=True,
         required=True,
@@ -380,6 +417,18 @@ class PsychologyEvaluation(models.Model):
         self.psychogram_id = False
 
     @api.onchange(
+        "type_id",
+    )
+    def onchange_report_type_id(self):
+        self.report_type_id = False
+
+    @api.onchange(
+        "type_id",
+    )
+    def onchange_deadline_id(self):
+        self.deadline_id = False
+
+    @api.onchange(
         "purpose_id",
     )
     def onchange_type_id(self):
@@ -419,6 +468,67 @@ class PsychologyEvaluation(models.Model):
         self.report_deadline = False
         if self.batch_id:
             self.report_deadline = self.batch_id.report_deadline
+
+    @api.onchange(
+        "deadline_id",
+        "date_start",
+        "initial_recommendation_deadline",
+        "evaluation_deadline",
+        "review_deadline",
+        "editing_deadline",
+        "type_id",
+    )
+    def onchange_deadline(self):
+        self.initial_recommendation_deadline = (
+            self.evaluation_deadline
+        ) = self.review_deadline = self.editing_deadline = self.report_deadline = False
+        if self.deadline_id and self.type_id:
+
+            field_ref = self.date_start
+
+            if (
+                self.type_id.use_initial_recommendation
+                and self.deadline_id.initial_recommendation_auto_deadline
+            ):
+                if field_ref:
+                    dt_ref = fields.Date.add(
+                        field_ref,
+                        days=self.deadline_id.initial_recommendation_deadline_offset,
+                    )
+                    self.initial_recommendation_deadline = fields.Date.to_string(dt_ref)
+                    field_ref = self.initial_recommendation_deadline
+
+            if self.deadline_id.evaluation_auto_deadline:
+                if field_ref:
+                    dt_ref = fields.Date.add(
+                        field_ref, days=self.deadline_id.evaluation_deadline_offset
+                    )
+                    self.evaluation_deadline = fields.Date.to_string(dt_ref)
+                    field_ref = self.evaluation_deadline
+
+            if self.type_id.use_review and self.deadline_id.review_auto_deadline:
+                if field_ref:
+                    dt_ref = fields.Date.add(
+                        field_ref, days=self.deadline_id.review_deadline_offset
+                    )
+                    self.review_deadline = fields.Date.to_string(dt_ref)
+                    field_ref = self.review_deadline
+
+            if self.type_id.use_editing and self.deadline_id.editing_auto_deadline:
+                if field_ref:
+                    dt_ref = fields.Date.add(
+                        field_ref, days=self.deadline_id.editing_deadline_offset
+                    )
+                    self.editing_deadline = fields.Date.to_string(dt_ref)
+                    field_ref = self.editing_deadline
+
+            if self.deadline_id.report_auto_deadline:
+                if field_ref:
+                    dt_ref = fields.Date.add(
+                        field_ref, days=self.deadline_id.report_deadline_offset
+                    )
+                    self.report_deadline = fields.Date.to_string(dt_ref)
+                    field_ref = self.report_deadline
 
     def action_reload_detail(self):
         for record in self:

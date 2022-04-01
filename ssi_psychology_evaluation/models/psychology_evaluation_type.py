@@ -32,8 +32,29 @@ class PsychologyEvaluationType(models.Model):
         column1="type_id",
         column2="psychogram_id",
     )
-    recommedation_ids = fields.Many2many(
-        string="Allowed Recommedations",
+    psychogram_ids = fields.Many2many(
+        string="Allowed Psychograms",
+        comodel_name="psychology.psychogram",
+        relation="psychology_rel_evaluation_type_2_psychogram",
+        column1="type_id",
+        column2="psychogram_id",
+    )
+    report_type_ids = fields.Many2many(
+        string="Allowed Report Types",
+        comodel_name="psychology.evaluation_report_type",
+        relation="psychology_rel_evaluation_type_2_report_type",
+        column1="type_id",
+        column2="report_type_id",
+    )
+    deadline_ids = fields.Many2many(
+        string="Allowed Deadlines",
+        comodel_name="psychology.evaluation_deadline",
+        relation="psychology_rel_evaluation_type_2_deadline",
+        column1="type_id",
+        column2="deadline_id",
+    )
+    recommendation_ids = fields.Many2many(
+        string="Allowed Recommendations",
         comodel_name="psychology.evaluation_recommendation",
         relation="psychology_rel_evaluation_type_2_recommendation",
         column1="type_id",

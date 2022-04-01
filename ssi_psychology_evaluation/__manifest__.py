@@ -4,7 +4,7 @@
 
 {
     "name": "Psychology Evaluation",
-    "version": "14.0.2.2.0",
+    "version": "14.0.2.3.0",
     "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "LGPL-3",
@@ -30,6 +30,8 @@
         "views/psychology_evaluation_recommendation_views.xml",
         "views/psychology_evaluation_result_views.xml",
         "views/psychology_evaluation_purpose_views.xml",
+        "views/psychology_evaluation_report_type_views.xml",
+        "views/psychology_evaluation_deadline_views.xml",
         "views/psychology_psychogram_views.xml",
         "views/psychology_evaluation_type_views.xml",
         "views/psychology_evaluation_views.xml",
@@ -41,6 +43,8 @@
         "demo/psychology_psychogram_item_value_demo.xml",
         "demo/psychology_psychogram_item_value_set_demo.xml",
         "demo/psychology_psychogram_demo.xml",
+        "demo/psychology_evaluation_report_type_demo.xml",
+        "demo/psychology_evaluation_deadline_demo.xml",
         "demo/psychology_evaluation_type_demo.xml",
     ],
 }
