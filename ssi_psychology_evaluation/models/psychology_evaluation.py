@@ -479,9 +479,6 @@ class PsychologyEvaluation(models.Model):
         "type_id",
     )
     def onchange_deadline(self):
-        self.initial_recommendation_deadline = (
-            self.evaluation_deadline
-        ) = self.review_deadline = self.editing_deadline = self.report_deadline = False
         if self.deadline_id and self.type_id:
 
             field_ref = self.date_start
@@ -490,6 +487,7 @@ class PsychologyEvaluation(models.Model):
                 self.type_id.use_initial_recommendation
                 and self.deadline_id.initial_recommendation_auto_deadline
             ):
+                self.initial_recommendation_deadline = False
                 if field_ref:
                     dt_ref = fields.Date.add(
                         field_ref,
@@ -499,6 +497,7 @@ class PsychologyEvaluation(models.Model):
                     field_ref = self.initial_recommendation_deadline
 
             if self.deadline_id.evaluation_auto_deadline:
+                self.evaluation_deadline = False
                 if field_ref:
                     dt_ref = fields.Date.add(
                         field_ref, days=self.deadline_id.evaluation_deadline_offset
@@ -507,6 +506,7 @@ class PsychologyEvaluation(models.Model):
                     field_ref = self.evaluation_deadline
 
             if self.type_id.use_review and self.deadline_id.review_auto_deadline:
+                self.review_deadline = False
                 if field_ref:
                     dt_ref = fields.Date.add(
                         field_ref, days=self.deadline_id.review_deadline_offset
@@ -515,6 +515,7 @@ class PsychologyEvaluation(models.Model):
                     field_ref = self.review_deadline
 
             if self.type_id.use_editing and self.deadline_id.editing_auto_deadline:
+                self.editing_deadline = False
                 if field_ref:
                     dt_ref = fields.Date.add(
                         field_ref, days=self.deadline_id.editing_deadline_offset
@@ -523,6 +524,7 @@ class PsychologyEvaluation(models.Model):
                     field_ref = self.editing_deadline
 
             if self.deadline_id.report_auto_deadline:
+                self.report_deadline = False
                 if field_ref:
                     dt_ref = fields.Date.add(
                         field_ref, days=self.deadline_id.report_deadline_offset
