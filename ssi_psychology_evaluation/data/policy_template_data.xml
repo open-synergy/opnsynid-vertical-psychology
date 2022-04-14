@@ -164,7 +164,12 @@ if env.user.id in document.active_approver_user_ids.ids:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','psychology.evaluation'),('value','=','confirm')]"
             />
-    <field name="restrict_user" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_validator_group')])]"
+            />
     <field name="restrict_additional" eval="1" />
     <field name="additional_python_code">result = False
 if not document.approval_template_id:
@@ -184,7 +189,12 @@ if not document.approval_template_id:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','psychology.evaluation'),('value','in',['draft','quick','evaluation','review','editing','confirm','done'])]"
             />
-    <field name="restrict_user" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_validator_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -201,7 +211,12 @@ if not document.approval_template_id:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','psychology.evaluation'),('value','in',['cancel','reject'])]"
             />
-    <field name="restrict_user" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_validator_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -217,7 +232,12 @@ if not document.approval_template_id:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','psychology.evaluation'),('value','=','draft')]"
             />
-    <field name="restrict_user" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_validator_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -249,7 +269,12 @@ if not document.approval_template_id:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','=','open')]"
             />
-    <field name="restrict_user" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_batch_user_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -304,7 +329,12 @@ if env.user.id in document.active_approver_user_ids.ids:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','=','confirm')]"
             />
-    <field name="restrict_user" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_batch_validator_group')])]"
+            />
     <field name="restrict_additional" eval="1" />
     <field name="additional_python_code">result = False
 if not document.approval_template_id:
@@ -323,7 +353,12 @@ if not document.approval_template_id:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','in',['draft','open','confirm','done'])]"
             />
-    <field name="restrict_user" eval="0" />
+      <field name="restrict_user" eval="1" />
+      <field name="computation_method">use_group</field>
+      <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_batch_validator_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -340,7 +375,12 @@ if not document.approval_template_id:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','in',['cancel','reject'])]"
             />
-    <field name="restrict_user" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_batch_validator_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -356,7 +396,12 @@ if not document.approval_template_id:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','=','draft')]"
             />
-    <field name="restrict_user" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_batch_validator_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -372,7 +417,12 @@ if not document.approval_template_id:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','psychology.evaluation_batch'),('value','=','draft')]"
             />
-    <field name="restrict_user" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_batch_user_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 </data>
