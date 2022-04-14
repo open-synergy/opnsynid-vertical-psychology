@@ -107,6 +107,7 @@
         parent="menu_psychology_evaluation_configuration"
         action="psychology_evaluation_deadline_action"
         sequence="5"
+        groups="psychology_evaluation_deadline_group"
     />
 
 </odoo>

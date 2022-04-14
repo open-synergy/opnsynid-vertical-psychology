@@ -49,6 +49,7 @@
         parent="menu_psychology_psychogram_root"
         action="psychology_psychogram_item_category_action"
         sequence="1"
+        groups="psychology_psychogram_item_category_group"
     />
 
 </odoo>

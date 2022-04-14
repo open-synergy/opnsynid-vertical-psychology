@@ -61,6 +61,7 @@
         parent="menu_psychology_psychogram_root"
         action="psychology_psychogram_item_value_set_action"
         sequence="2"
+        groups="psychology_psychogram_item_value_set_group"
     />
 
 </odoo>

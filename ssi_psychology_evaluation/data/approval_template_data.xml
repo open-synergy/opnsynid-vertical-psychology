@@ -15,7 +15,10 @@
 <record id="approval_template_detail1" model="approval.template_detail">
     <field name="template_id" ref="approval_template" />
     <field name="approver_selection_method">use_group</field>
-    <field name="approver_group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+    <field
+                name="approver_group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_validator_group')])]"
+            />
 </record>
 
 <!-- Evaluation Batch -->
@@ -33,7 +36,10 @@
 <record id="approval_template_detail_batch1" model="approval.template_detail">
     <field name="template_id" ref="approval_template_batch" />
     <field name="approver_selection_method">use_group</field>
-    <field name="approver_group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+    <field
+                name="approver_group_ids"
+                eval="[(6,0,[ref('ssi_psychology_evaluation.psychology_evaluation_batch_validator_group')])]"
+            />
 </record>
 </data>
 </odoo>

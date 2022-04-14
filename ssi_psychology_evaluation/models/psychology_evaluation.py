@@ -339,12 +339,7 @@ class PsychologyEvaluation(models.Model):
 
     def action_quick(self):
         for record in self:
-            sequence = self._create_sequence()
-            record.write(
-                {
-                    "name": sequence,
-                }
-            )
+            self._create_sequence()
             if not record.type_id.use_initial_recommendation:
                 record.action_evaluate()
             else:
