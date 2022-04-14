@@ -125,7 +125,7 @@
 <record id="res_users_8" model="res.users">
     <field name="partner_id" ref="ssi_psychology.res_partner_8" />
     <field name="login">albert-bandura</field>
-    <field name="password">demo1234</field>
+    <field name="password">J6u+CbzV^_>KT*u2</field>
     <field name="company_id" ref="base.main_company" />
     <field name="notification_type">email</field>
     <field
@@ -142,7 +142,7 @@
 <record id="res_users_9" model="res.users">
     <field name="partner_id" ref="ssi_psychology.res_partner_9" />
     <field name="login">bf-skinner</field>
-    <field name="password">demo1234</field>
+    <field name="password">N$#fNS/j;5GX_}ZN</field>
     <field name="company_id" ref="base.main_company" />
     <field name="notification_type">email</field>
     <field
