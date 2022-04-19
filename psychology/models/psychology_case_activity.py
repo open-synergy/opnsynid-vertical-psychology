@@ -255,6 +255,11 @@ class PsychologyCaseActivity(models.Model):
         string="Date Finish",
         readonly=True,
     )
+    report_id = fields.Many2one(
+        string="# Report",
+        comodel_name="psychology.case_activity_report",
+        readonly=True,
+    )
     note = fields.Text(
         string="Note",
     )

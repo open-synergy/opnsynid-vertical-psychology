@@ -11,4 +11,5 @@ from . import (
     psychology_case,
     psychology_case_service,
     psychology_case_activity,
+    psychology_case_activity_report,
 )
