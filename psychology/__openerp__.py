@@ -5,7 +5,7 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Vertical Psychology",
-    "version": "8.0.1.1.0",
+    "version": "8.0.1.2.0",
     "author": "PT. Simetri Sinergi Indonesia,OpenSynergy Indonesia",
     "website": "https://simetri-sinergi.id",
     "license": "AGPL-3",
@@ -41,6 +41,7 @@
         "views/psychology_case_views.xml",
         "views/psychology_case_service_views.xml",
         "views/psychology_case_activity_views.xml",
+        "views/psychology_case_activity_report_views.xml",
         "views/res_partner_views.xml",
     ],
     "demo": [
