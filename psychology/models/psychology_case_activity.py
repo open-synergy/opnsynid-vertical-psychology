@@ -31,15 +31,20 @@ class PsychologyCaseActivity(models.Model):
         "price_unit",
         "quantity",
         "tax_ids",
+        "responsible_id",
+        "product_id",
     )
     @api.multi
     def _compute_total(self):
         for record in self:
             amount_untaxed = amount_tax = amount_total = 0.0
+            product = record.product_id or False
+            partner = record.responsible_id or False
             tax_comp = record.tax_ids.compute_all(
                 price_unit=record.price_unit,
                 quantity=record.quantity,
-                product=record.product_id,
+                product=product,
+                partner=partner,
             )
             amount_untaxed += tax_comp["total"]
             amount_tax += tax_comp["total_included"] - tax_comp["total"]
@@ -374,7 +379,7 @@ class PsychologyCaseActivity(models.Model):
     def onchange_tax_ids(self):
         self.tax_ids = []
         if self.product_id:
-            self.tax_ids = self.product_id.taxes_id
+            self.tax_ids = self.product_id.supplier_taxes_id
 
     @api.onchange(
         "product_id",
