@@ -95,9 +95,38 @@
                                 name="use_psychology_evaluation_right"
                                 class="o_setting_right_pane"
                             >
-                              <label for="module_ssi_psychology_operating_unit" />
+                              <label
+                                    for="module_ssi_psychology_operating_unit"
+                                    string="Operating Unit"
+                                />
                               <div class="text-muted">
                                   Enable integration with operating unit
+                              </div>
+                          </div>
+                      </div>
+
+                      <div
+                            id="related_attachment_integration"
+                            class="col-12 col-lg-6 o_setting_box"
+                        >
+                          <div
+                                name="related_attachment_integration_left"
+                                class="o_setting_left_pane"
+                            >
+                              <field
+                                    name="module_ssi_psychology_evaluation_related_attachment"
+                                />
+                          </div>
+                          <div
+                                name="related_attachment_integration_right"
+                                class="o_setting_right_pane"
+                            >
+                              <label
+                                    for="module_ssi_psychology_evaluation_related_attachment"
+                                    string="Related Attachment"
+                                />
+                              <div class="text-muted">
+                                  Enable integration with related attachment
                               </div>
                           </div>
                       </div>
