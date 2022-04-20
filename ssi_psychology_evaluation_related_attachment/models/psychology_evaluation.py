@@ -11,3 +11,4 @@ class PsychologyEvaluation(models.Model):
         "psychology.evaluation",
         "mixin.related_attachment",
     ]
+    _related_attachment_create_page = True

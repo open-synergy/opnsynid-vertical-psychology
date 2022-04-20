@@ -11,3 +11,4 @@ class PsychologyEvaluationBatch(models.Model):
         "psychology.evaluation_batch",
         "mixin.related_attachment",
     ]
+    _related_attachment_create_page = True
