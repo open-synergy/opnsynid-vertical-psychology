@@ -338,26 +338,26 @@ class PsychologyEvaluation(models.Model):
         _super._compute_policy()
 
     def action_quick(self):
-        for record in self:
-            self._create_sequence()
+        for record in self.sudo():
+            record._create_sequence()
             if not record.type_id.use_initial_recommendation:
                 record.action_evaluate()
             else:
                 record.write(record._prepare_quick_data())
 
     def action_evaluate(self):
-        for record in self:
-            record.write(record._prepare_evaluate_data())
+        for record in self.sudo():
+            record.sudo().write(record.sudo()._prepare_evaluate_data())
 
     def action_review(self):
-        for record in self:
+        for record in self.sudo():
             if not record.type_id.use_review:
                 record.action_editing()
             else:
                 record.write(record._prepare_review_data())
 
     def action_editing(self):
-        for record in self:
+        for record in self.sudo():
             if not record.type_id.use_editing:
                 record.action_confirm()
             else:
@@ -528,7 +528,7 @@ class PsychologyEvaluation(models.Model):
                     field_ref = self.report_deadline
 
     def action_reload_detail(self):
-        for record in self:
+        for record in self.sudo():
             record._reload_detail()
 
     def _reload_detail(self):
