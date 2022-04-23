@@ -16,4 +16,14 @@
     <field name="name">Psychology - Data Ownership</field>
 </record>
 
+<record id="psychology_reporting_module_category" model="ir.module.category">
+    <field name="name">Psychology - Reporting</field>
+    <field name="parent_id" ref="psychology_module_category" />
+</record>
+
+<record id="psychology_wizard_module_category" model="ir.module.category">
+    <field name="name">Psychology - Wizard</field>
+    <field name="parent_id" ref="psychology_module_category" />
+</record>
+
 </odoo>
