@@ -831,7 +831,7 @@
         parent="menu_psychology_evaluation_root"
         action="psychology_evaluation_action"
         sequence="1"
-        groups="psychology_evaluation_user_group"
+        groups="psychology_evaluation_viewer_group"
     />
 
 <record id="psychology_evaluation_initial_action" model="ir.actions.act_window">
@@ -875,7 +875,7 @@
         parent="menu_psychology_evaluation_root"
         action="psychology_evaluation_initial_action"
         sequence="2"
-        groups="psychology_evaluation_user_group"
+        groups="psychology_evaluation_viewer_group"
     />
 
 <record id="psychology_evaluation_evaluation_action" model="ir.actions.act_window">
@@ -918,7 +918,7 @@
         parent="menu_psychology_evaluation_root"
         action="psychology_evaluation_evaluation_action"
         sequence="3"
-        groups="psychology_evaluation_user_group"
+        groups="psychology_evaluation_viewer_group"
     />
 
 <record id="psychology_evaluation_review_action" model="ir.actions.act_window">
@@ -961,7 +961,7 @@
         parent="menu_psychology_evaluation_root"
         action="psychology_evaluation_review_action"
         sequence="4"
-        groups="psychology_evaluation_user_group"
+        groups="psychology_evaluation_viewer_group"
     />
 
 <record id="psychology_evaluation_edit_action" model="ir.actions.act_window">
@@ -1004,7 +1004,7 @@
         parent="menu_psychology_evaluation_root"
         action="psychology_evaluation_edit_action"
         sequence="5"
-        groups="psychology_evaluation_user_group"
+        groups="psychology_evaluation_viewer_group"
     />
 
 </odoo>
