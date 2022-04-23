@@ -315,6 +315,6 @@
         parent="menu_psychology_evaluation_batch_root"
         action="psychology_evaluation_batch_action"
         sequence="1"
-        groups="psychology_evaluation_batch_user_group"
+        groups="psychology_evaluation_batch_viewer_group"
     />
 </odoo>
