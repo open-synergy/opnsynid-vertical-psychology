@@ -382,7 +382,6 @@ class PsychologyCase(models.Model):
         return {
             "name": self.name,
             "partner_id": self.partner_id.id,
-            "user_id": self.user_id.id,
             "group_id": self.analytic_group_id and self.analytic_group_id.id or False,
         }
 
