@@ -2,3 +2,7 @@
 
 oca-server-tools https://github.com/OCA/server-tools.git 14.0
 ssi-mixin https://github.com/open-synergy/ssi-mixin.git 14.0
+opnsynid-server-tools https://github.com/open-synergy/opnsynid-server-tools.git 14.0
+oca-reporting-engine https://github.com/OCA/reporting-engine.git 14.0
+ssi-financial-accounting https://github.com/open-synergy/ssi-financial-accounting.git 14.0
+ssi-outsource-work https://github.com/open-synergy/ssi-outsource-work.git 14.0
