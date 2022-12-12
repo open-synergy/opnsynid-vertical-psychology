@@ -85,16 +85,15 @@ class PsychologyCaseTax(models.Model):
         case = self.case_id
         move_date = case.date
 
-        amount_currency = abs(self.tax_amount)
+        amount_currency = self.tax_amount
         amount = currency.with_context(date=move_date).compute(
             amount_currency,
             case.currency_id,
         )
 
         if amount < 0.0:
-            debit = amount
+            debit = abs(amount)
         else:
-            credit = amount
-            amount_currency *= -1.0
+            credit = abs(amount)
 
         return debit, credit, amount_currency
