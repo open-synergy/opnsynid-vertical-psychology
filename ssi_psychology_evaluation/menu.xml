@@ -7,14 +7,14 @@
         id="menu_psychology_evaluation_root"
         name="Evaluation"
         parent="ssi_psychology.menu_root_psychology"
-        sequence="20"
+        sequence="70"
     />
 
   <menuitem
         id="menu_psychology_evaluation_batch_root"
         name="Evaluation Batch"
         parent="ssi_psychology.menu_root_psychology"
-        sequence="30"
+        sequence="80"
     />
 
 <menuitem
