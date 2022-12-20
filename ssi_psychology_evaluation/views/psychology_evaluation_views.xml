@@ -1003,7 +1003,7 @@
         name="Active Edits"
         parent="menu_psychology_evaluation_root"
         action="psychology_evaluation_edit_action"
-        sequence="5"
+        sequence="70"
         groups="psychology_evaluation_viewer_group"
     />
 
