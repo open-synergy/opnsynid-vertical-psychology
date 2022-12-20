@@ -49,7 +49,7 @@
                 <field name="type_id" />
                 <field name="date" />
             </xpath>
-            <xpath expr="//page[1]" position="after">
+            <xpath expr="//page[1]" position="before">
                 <page name="result" string="Result">
                     <field name="result" />
                 </page>
