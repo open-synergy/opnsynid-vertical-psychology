@@ -14,6 +14,7 @@
                 <field name="partner_id" />
                 <field name="case_id" />
                 <field name="type_id" />
+                <field name="psychologist_id" widget="many2one_avatar" />
                 <field name="date" />
             </xpath>
         </data>
@@ -47,6 +48,16 @@
             </xpath>
             <xpath expr="//group[@name='header_right']" position="inside">
                 <field name="type_id" />
+                <field
+                        name="allowed_psychologist_ids"
+                        widget="many2many_tags_avatar"
+                        invisible="1"
+                    />
+                <field
+                        name="psychologist_id"
+                        domain="[('id','in',allowed_psychologist_ids)]"
+                        widget="many2one_avatar"
+                    />
                 <field name="date" />
             </xpath>
             <xpath expr="//page[1]" position="before">
@@ -59,7 +70,7 @@
 </record>
 
 <record id="psychology_consultation_action" model="ir.actions.act_window">
-    <field name="name">Consultations</field>
+    <field name="name">Psychology Consultations</field>
     <field name="res_model">psychology_consultation</field>
     <field name="type">ir.actions.act_window</field>
     <field name="view_mode">tree,form</field>

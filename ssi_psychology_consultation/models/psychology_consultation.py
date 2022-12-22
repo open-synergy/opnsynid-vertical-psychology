@@ -88,6 +88,19 @@ class PsychologyConsultation(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
+    allowed_psychologist_ids = fields.Many2many(
+        string="Allowed Psychologists",
+        related="type_id.allowed_psychologist_ids",
+        store=False,
+    )
+    psychologist_id = fields.Many2one(
+        string="Psychologist",
+        comodel_name="res.users",
+        required=True,
+        ondelete="restrict",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+    )
     result = fields.Text(
         string="Consultation Result",
         required=False,

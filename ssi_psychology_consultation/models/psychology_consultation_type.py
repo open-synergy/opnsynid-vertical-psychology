@@ -2,7 +2,7 @@
 # Copyright 2022 PT. Simetri Sinergi Indonesia
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import models
+from odoo import fields, models
 
 
 class PsychologyConsultationType(models.Model):
@@ -11,3 +11,11 @@ class PsychologyConsultationType(models.Model):
         "mixin.master_data",
     ]
     _description = "Psychology Consultation Type"
+
+    allowed_psychologist_ids = fields.Many2many(
+        string="Allowed Psychologists",
+        comodel_name="res.users",
+        relation="rel_psy_consultation_type_2_allowed_psychologist",
+        column1="type_id",
+        column2="user_id",
+    )
