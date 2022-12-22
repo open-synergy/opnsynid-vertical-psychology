@@ -4,13 +4,14 @@
 
 {
     "name": "Psychology Consultation",
-    "version": "14.0.1.1.0",
+    "version": "14.0.1.2.0",
     "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "LGPL-3",
     "installable": True,
     "depends": [
         "ssi_psychology_case",
+        "partner_contact_in_several_companies",
     ],
     "data": [
         "security/ir_module_category_data.xml",
@@ -24,5 +25,7 @@
         "views/psychology_consultation_type_views.xml",
         "views/psychology_consultation_views.xml",
     ],
-    "demo": [],
+    "demo": [
+        "demo/psychology_consultation_type_demo.xml",
+    ],
 }

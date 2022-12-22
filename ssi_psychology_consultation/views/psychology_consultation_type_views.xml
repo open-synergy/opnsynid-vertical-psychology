@@ -33,6 +33,17 @@
     <field name="mode">primary</field>
     <field name="arch" type="xml">
         <data>
+            <xpath expr="//page[1]" position="before">
+                <page name="user" string="Allowed User(s)">
+                    <group name="user_1" colspan="4" col="2">
+                        <field
+                                name="allowed_psychologist_ids"
+                                string="Psychologists"
+                                widget="many2many_tags_avatar"
+                            />
+                    </group>
+                </page>
+            </xpath>
         </data>
     </field>
 </record>
