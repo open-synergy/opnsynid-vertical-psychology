@@ -56,13 +56,17 @@
 
             </xpath>
             <xpath expr="//group[@name='header_right']" position="inside">
-                <field name="tester_id" domain="[('id','in',allowed_tester_ids)]" />
+                <field
+                        name="tester_id"
+                        widget="many2one_avatar"
+                        domain="[('id','in',allowed_tester_ids)]"
+                    />
             </xpath>
             <xpath expr="//page[1]" position="before">
                 <page name="client" string="Clients">
                     <field name="client_ids">
                         <tree editable="top">
-                            <field name="partner_id" />
+                            <field name="partner_id" widget="many2one_avatar" />
                             <field
                                     name="case_id"
                                     domain="[('partner_id','=',partner_id),('state','not in',['reject','draft','cancel'])]"
@@ -70,7 +74,7 @@
                         </tree>
                         <form>
                             <group name="client_1" colspan="4" col="2">
-                                <field name="partner_id" />
+                                <field name="partner_id" widget="many2one_avatar" />
                                 <field
                                         name="case_id"
                                         domain="[('partner_id','=',partner_id),('state','not in',['reject','draft','cancel'])]"
@@ -84,12 +88,13 @@
                         <tree editable="top">
                             <field
                                     name="observer_id"
+                                    widget="many2one_avatar"
                                     domain="[('id','in',parent.allowed_observer_ids)]"
                                 />
                         </tree>
                         <form>
                             <group name="client_1" colspan="4" col="2">
-                                <field name="observer_id" />
+                                <field name="observer_id" widget="many2one_avatar" />
                             </group>
                         </form>
                     </field>
