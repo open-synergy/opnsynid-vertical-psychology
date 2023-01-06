@@ -13,6 +13,7 @@ class PsychologyCaseTax(models.Model):
         string="# Case",
         comodel_name="psychology.case",
         required=True,
+        ondelete="cascade",
     )
     tax_id = fields.Many2one(
         string="Tax",
