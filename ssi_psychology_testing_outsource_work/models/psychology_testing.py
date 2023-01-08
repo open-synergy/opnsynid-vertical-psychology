@@ -14,6 +14,8 @@ class PsychologyTesting(models.Model):
         "mixin.outsource_work_object",
     ]
     _outsource_work_create_page = True
+    _work_log_page_xpath = "//page[@name='note']"
+    _work_log_template_position = "before"
 
     outsource_work_id = fields.Many2one(
         string="# Outsource Work",
