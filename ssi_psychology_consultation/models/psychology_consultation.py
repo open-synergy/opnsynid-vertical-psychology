@@ -101,7 +101,7 @@ class PsychologyConsultation(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
-    result = fields.Text(
+    result = fields.Html(
         string="Consultation Result",
         required=False,
         ondelete="restrict",
@@ -121,6 +121,7 @@ class PsychologyConsultation(models.Model):
             ("open", "In Progress"),
             ("confirm", "Waiting for Approval"),
             ("done", "Done"),
+            ("reject", "Reject"),
             ("cancel", "Cancelled"),
         ],
         copy=False,
