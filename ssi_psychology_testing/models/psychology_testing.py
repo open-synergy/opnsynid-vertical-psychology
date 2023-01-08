@@ -111,6 +111,7 @@ class PsychologyTesting(models.Model):
             ("open", "In Progress"),
             ("confirm", "Waiting for Approval"),
             ("done", "Done"),
+            ("reject", "Reject"),
             ("cancel", "Cancelled"),
         ],
         copy=False,
