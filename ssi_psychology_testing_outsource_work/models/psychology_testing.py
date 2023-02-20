@@ -2,7 +2,8 @@
 # Copyright 2022 PT. Simetri Sinergi Indonesia
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import fields, models
+from odoo import _, fields, models
+from odoo.exceptions import UserError
 
 from odoo.addons.ssi_decorator import ssi_decorator
 
@@ -82,8 +83,22 @@ class PsychologyTesting(models.Model):
         self.ensure_one()
         result = False
         # TODO: Raise exception when False
-        if self.tester_id.partner_id.contact_id:
+        if (
+            self.tester_id.partner_id.id
+            != self.tester_id.partner_id.commercial_partner_id.id
+            and self.tester_id.partner_id.contact_id
+        ):
             result = self.tester_id.partner_id.contact_id
+        elif (
+            self.tester_id.partner_id.id
+            == self.tester_id.partner_id.commercial_partner_id.id
+        ):
+            result = self.tester_id.partner_id
+
+        if not result:
+            error_msg = _("No partner defined")
+            raise UserError(error_msg)
+
         return result
 
     def _prepare_create_outsource_work(self):
