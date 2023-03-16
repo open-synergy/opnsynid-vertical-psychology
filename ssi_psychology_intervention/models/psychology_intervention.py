@@ -114,7 +114,7 @@ class PsychologyIntervention(models.Model):
     )
     state = fields.Selection(
         string="Status",
-        election=[
+        selection=[
             ("draft", "Draft"),
             ("open", "In Progress"),
             ("confirm", "Waiting for Approval"),
