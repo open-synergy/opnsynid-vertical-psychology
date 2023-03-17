@@ -84,11 +84,7 @@
                 name="group_ids"
                 eval="[(6,0,[ref('psychology_intervention_validator_group')])]"
             />
-            <field name="restrict_additional" eval="1" />
-            <field name="additional_python_code">result = True
-if document.state == "done" and document.amount_realized > 0.0:
-    result = False
-            </field>
+            <field name="restrict_additional" eval="0" />
         </record>
 
         <!-- restart -->

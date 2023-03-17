@@ -61,6 +61,7 @@
                     <field
                         name="allowed_facilitator_ids"
                         widget="many2many_tags_avatar"
+                        invisible="1"
                     />
                     <field name="facilitator_id" widget="many2one_avatar">
                         <attribute
