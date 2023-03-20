@@ -47,7 +47,6 @@ class PsychologyIntervention(models.Model):
         "action_confirm",
         "action_approve_approval",
         "action_reject_approval",
-        "action_done",
         "%(ssi_transaction_cancel_mixin.base_select_cancel_reason_action)d",
         "action_restart",
     ]
@@ -140,3 +139,9 @@ class PsychologyIntervention(models.Model):
         ]
         res += policy_field
         return res
+
+    @api.onchange(
+        "partner_id",
+    )
+    def onchange_case_id(self):
+        self.case_id = False
