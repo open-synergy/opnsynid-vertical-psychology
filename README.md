@@ -14,7 +14,23 @@ Odoo modules for psychology firm management"
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[ssi_psychology](ssi_psychology/) | 14.0.3.6.0 |  | Psychology
+[ssi_psychology_case](ssi_psychology_case/) | 14.0.1.2.0 |  | Psychology Case
+[ssi_psychology_case_outsource_work](ssi_psychology_case_outsource_work/) | 14.0.1.1.0 |  | Psychology Case - Outsource Work Integration
+[ssi_psychology_consultation](ssi_psychology_consultation/) | 14.0.1.4.0 |  | Psychology Consultation
+[ssi_psychology_consultation_outsource_work](ssi_psychology_consultation_outsource_work/) | 14.0.1.1.0 |  | Psychology Consultation - Outsource Work Integration
+[ssi_psychology_evaluation](ssi_psychology_evaluation/) | 14.0.2.7.0 |  | Psychology Evaluation
+[ssi_psychology_evaluation_operating_unit](ssi_psychology_evaluation_operating_unit/) | 14.0.1.1.0 |  | Psychology Evaluation - Operating Unit Integration
+[ssi_psychology_evaluation_outsource_work](ssi_psychology_evaluation_outsource_work/) | 14.0.1.0.0 |  | Psychology Evaluation - Outsource Work Integration
+[ssi_psychology_evaluation_related_attachment](ssi_psychology_evaluation_related_attachment/) | 14.0.1.1.0 |  | Psychology Evaluation - Related Attachment Integration
+[ssi_psychology_intervention](ssi_psychology_intervention/) | 14.0.1.0.0 |  | Psychology Intervention
+[ssi_psychology_operating_unit](ssi_psychology_operating_unit/) | 14.0.2.0.0 |  | Psychology - Operating Unit Integration
+[ssi_psychology_testing](ssi_psychology_testing/) | 14.0.1.2.0 |  | Psychology Testing
+[ssi_psychology_testing_outsource_work](ssi_psychology_testing_outsource_work/) | 14.0.1.1.1 |  | Psychology Testing - Outsource Work Integration
 
 [//]: # (end addons)
 
