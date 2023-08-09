@@ -15,6 +15,7 @@
                 <field name="institution_id" />
                 <field name="type_id" />
                 <field name="date" />
+                <field name="date_done" />
                 <field name="currency_id" invisible="1" />
                 <field name="amount_untaxed" optional="hide" />
                 <field name="amount_tax" optional="hide" />
@@ -91,6 +92,7 @@
                         invisible="1"
                     />
                 <field name="date" />
+                <field name="date_done" />
             </xpath>
             <xpath expr="//group[@name='header_right']" position="inside">
                 <field name="currency_id" />
