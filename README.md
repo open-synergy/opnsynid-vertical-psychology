@@ -19,7 +19,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [ssi_psychology](ssi_psychology/) | 14.0.3.7.0 |  | Psychology
-[ssi_psychology_case](ssi_psychology_case/) | 14.0.1.3.0 |  | Psychology Case
+[ssi_psychology_case](ssi_psychology_case/) | 14.0.1.4.0 |  | Psychology Case
 [ssi_psychology_case_outsource_work](ssi_psychology_case_outsource_work/) | 14.0.1.2.0 |  | Psychology Case - Outsource Work Integration
 [ssi_psychology_consultation](ssi_psychology_consultation/) | 14.0.1.5.0 |  | Psychology Consultation
 [ssi_psychology_consultation_outsource_work](ssi_psychology_consultation_outsource_work/) | 14.0.1.2.0 |  | Psychology Consultation - Outsource Work Integration
