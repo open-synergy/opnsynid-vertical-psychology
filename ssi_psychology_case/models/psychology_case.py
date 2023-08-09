@@ -121,6 +121,10 @@ class PsychologyCase(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
+    date_done = fields.Date(
+        string="Date Done",
+        readonly=False,
+    )
     service_ids = fields.One2many(
         string="Services",
         comodel_name="psychology.service",
