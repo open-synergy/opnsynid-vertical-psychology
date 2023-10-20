@@ -103,7 +103,7 @@ class PsychologyIntervention(models.Model):
     date = fields.Date(
         string="Date",
         required=True,
-        readony=True,
+        readonly=True,
         states={"draft": [("readonly", False)]},
     )
     result = fields.Html(

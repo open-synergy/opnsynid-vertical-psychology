@@ -7,6 +7,7 @@ from odoo import fields, models
 
 class PsychologyInterventionType(models.Model):
     _name = "psychology_intervention_type"
+    _description = "Psychology Intervention Type"
     _inherit = [
         "mixin.master_data",
     ]
